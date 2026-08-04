@@ -1,0 +1,39 @@
+https://chat.openai.com/share/14a66266-ea0c-405b-a427-161160579a67
+
+Sub MergePPTs()
+    Dim MyPresentation As Presentation
+    Dim SourcePresentation As Presentation
+    Dim SourceSlide As Slide
+    Dim i As Integer
+    Dim strPath As String
+    Dim strFilePattern As String
+    Dim strFileName As String
+
+    strPath = "Path where PPTs are gathered"
+    strFilePattern = strPath & "*.pptx"
+    strFileName = Dir(strFilePattern)
+
+     'Create a new presentation
+    Set MyPresentation = Presentations.Add
+
+     'Merge all PPT files in new_ppt folder
+    Do While strFileName <> ""
+        Open each PPT and add the slides to a new presentation
+        Set SourcePresentation = Presentations.Open(strPath & strFileName)
+
+        For i = 1 To SourcePresentation.Slides.Count
+            Set SourceSlide = SourcePresentation.Slides(i)
+            SourceSlide.Copy
+            MyPresentation.Slides.Paste
+        Next i
+
+        'SourcePresentation Close and then process the file
+        SourcePresentation.Close
+        strFileName = Dir
+    Loop
+
+    Save the merged file as result.pptx
+    MyPresentation.SaveAs “Path where you want to save the PPT”
+    MyPresentation.Close
+End Sub
+

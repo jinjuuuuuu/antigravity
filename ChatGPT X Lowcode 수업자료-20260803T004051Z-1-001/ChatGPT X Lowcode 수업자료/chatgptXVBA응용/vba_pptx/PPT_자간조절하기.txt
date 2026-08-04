@@ -1,0 +1,27 @@
+https://chatgpt.com/share/e/673506c1-f984-8009-9cb2-3ddc152ae6e3
+
+Sub AdjustSpacingAllShapes()
+
+Dim sld As Slide
+Dim shp As Shape
+
+'모든 슬라이드 순회
+For Each sld In ActivePresentation.Slides
+    '각 슬라이드의 모든 도형 순회
+    For Each shp In sld.Shapes
+        '도형에 텍스트 프레임이 있는 경우
+        If shp.HasTextFrame Then
+            '에러 핸들링
+            On Error Resume Next
+            '텍스트 프레임의 폰트 이름과 자간 변경
+            With shp
+                .TextFrame2.TextRange.Font.Spacing = 20
+            End With
+            '에러 상태 초기화
+            On Error GoTo 0
+        End If
+    Next shp
+Next sld
+
+End Sub
+
