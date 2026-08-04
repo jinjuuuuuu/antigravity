@@ -4,6 +4,9 @@
 # Do not ignore .gitignore
 !.gitignore
 
+# Do not ignore index.html at root
+!index.html
+
 # Do not ignore 13579 directory and its contents
 !13579/
 !13579/**
