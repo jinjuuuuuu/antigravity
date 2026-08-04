@@ -1,0 +1,9 @@
+# Ignore all files and folders by default
+*
+
+# Do not ignore .gitignore
+!.gitignore
+
+# Do not ignore 13579 directory and its contents
+!13579/
+!13579/**
